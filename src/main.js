@@ -5,6 +5,7 @@ import App from "@/App.vue";
 import router from "@/router";
 
 import "@/scss/main.scss";
+import "@mdi/font/css/materialdesignicons.min.css";
 
 const app = createApp(App);
 

@@ -1,9 +1,18 @@
 @import '../node_modules/bulma/bulma.sass';
 
-// .hero {
-//   background-color: #bf48c7;
-// }
+.hero {
+  background-color: #bf48c7 !important;
+}
 
-// .navbar-item, .title {
-//   color: white !important;
-// }
+.navbar-item, .title {
+  color: white !important;
+}
+
+.navbar-item:hover {
+  background-color: #bf48c7 !important;
+}
+
+#navbarBabyApp {
+  background-color: #bf48c7 !important;
+}
+

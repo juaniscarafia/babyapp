@@ -16,7 +16,7 @@
                 <span aria-hidden="true"></span>
               </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu" :class="{'is-active': menuMobileIsActive, '': !menuMobileIsActive}">
+            <div id="navbarBabyApp" class="navbar-menu" :class="{'is-active': menuMobileIsActive, '': !menuMobileIsActive}">
               <div class="navbar-start">
                 <!-- <router-link class="navbar-item" :to="{ path: '/', name: 'search' }">Buscar</router-link>
                 <router-link class="navbar-item" to="about">Nosotros</router-link> -->
@@ -26,12 +26,12 @@
         </div>
       </header>
     </div>
-    <div class="hero-body">
+    <!-- <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">Baby App</h1>
-        <!-- <h2 class="subtitle"></h2> -->
+        <h2 class="subtitle"></h2>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 

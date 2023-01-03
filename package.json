@@ -9,8 +9,10 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.10",
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/font": "^7.1.96",
     "axios": "^1.2.1",
+    "bulma": "^0.9.4",
     "nativescript-sqlite": "^2.8.6",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
