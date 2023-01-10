@@ -57,6 +57,18 @@
 <style lang="scss" scoped>
   @media screen and (max-width: 767px){
     .table {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (min-width: 767px) and (max-width: 1215){
+    .table {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (min-width: 1215px){
+    .table {
       font-size: 14px;
     }
   }

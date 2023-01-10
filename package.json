@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
@@ -11,6 +11,7 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/font": "^7.1.96",
+    "@vuepic/vue-datepicker": "^3.6.4",
     "axios": "^1.2.1",
     "bulma": "^0.9.4",
     "nativescript-sqlite": "^2.8.6",

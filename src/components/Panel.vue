@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <BappAdd />
+    <BappAdd/>
   </div>
   
 </template>
@@ -37,11 +37,6 @@ import BappAdd from '@/components/Buttons/Add.vue';
 
 export default {
   mixins: [],
-  // data() {
-  //   return {
-  //     track: {}
-  //   }
-  // },
   components: { BappTable, BappAdd },
   props: {
     measureMilk: {
@@ -61,6 +56,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  .container .results, .columns .is-multiline .is-flex .is-justify-content-center{
+    width: 100%;
+  }
   .column {
     margin: 20px;
   }
