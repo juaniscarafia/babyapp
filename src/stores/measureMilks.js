@@ -3,7 +3,9 @@ import measureMilkService from "@/services/measureMilk";
 
 export const useMeasureMilkstore = defineStore('measureMilks', {
   state: () => { 
-    return {measureMilk: {} }
+    return {
+      measureMilk: {}
+    }
   },
   getters: {
     getMeasure(state){

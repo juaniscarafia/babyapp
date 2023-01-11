@@ -2,7 +2,9 @@ import { defineStore } from "pinia";
 
 export const useShowModalStore = defineStore('showModal', {
   state: () => { 
-    return {showModal: false }
+    return {
+      showModal: false
+    }
   },
   getters: {
     

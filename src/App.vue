@@ -2,6 +2,9 @@
     <main>
         <BappLogin v-if="stateAccess.access"/>
         <BappHeader/>
+        <Transition name="move">
+          <BappLoader v-show="isLoading"/>
+        </Transition>
         <BappPanel :measureMilk="stateMeasureMilks.measureMilk"/>
         <BappFooter/>
     </main>
@@ -17,6 +20,7 @@ import BappHeader from '@/components/Layout/Header.vue';
 import BappFooter from '@/components/Layout/Footer.vue';
 import BappPanel from '@/components/Panel.vue';
 import BappModal from '@/components/Layout/Modal.vue';
+import BappLoader from '@/components/Layout/Loader.vue';
 
 export default {
     setup() {
@@ -30,13 +34,17 @@ export default {
       }
     },
     data() {
+      return {
+        isLoading: false
+      }
     },
     components: { 
       BappHeader, 
       BappFooter,
       BappPanel,
       BappModal,
-      BappLogin
+      BappLogin,
+      BappLoader
     },
     mounted() {
       this.stateMeasureMilks.getMeasureMilks();
