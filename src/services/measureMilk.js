@@ -22,7 +22,7 @@ measureMilks.listMilks = async function() {
 measureMilks.insert = async function(data) {
   // return await axios.post('http://localhost:3004/api/measuremilks/insertmeasure',data)
   // return await axios.post('https://port-3004-lucecitapp-juaniscarafia231893.codeanyapp.com/api/measuremilks/insertmeasure',data)
-  return await axios.get('https://apibabyapp.onrender.com/api/measuremilks/insertmeasure',data)
+  return await axios.post('https://apibabyapp.onrender.com/api/measuremilks/insertmeasure',data)
     .then(res => res)
     .catch(error => error);
 };

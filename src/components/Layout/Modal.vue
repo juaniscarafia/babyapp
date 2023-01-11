@@ -153,9 +153,6 @@ export default {
     })
   },
   methods: {
-    updateTime(event) {
-      console.log(event.target.value);
-    },
     insertMeasure() {
       if (this.dataMeasure.IdMilk === 0) {
         this.closeModal();
@@ -172,7 +169,6 @@ export default {
 
       measureMilks.insert(this.dataMeasure).then(res => {
         this.stateMeasureMilks.getMeasureMilks();
-        console.log(res.data.body);
         this.closeModal();
       });
     }
