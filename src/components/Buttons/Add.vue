@@ -3,7 +3,7 @@
     <button class="button is-rounded" @click="openModal">
       <span class="mdi mdi-plus-circle"></span>
     </button>
-    <BappModal />
+    <BappModal v-if="state.showModal"/>
   </div>
 </template>
 

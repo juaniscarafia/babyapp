@@ -3,7 +3,7 @@
         <BappLogin v-if="stateAccess.access"/>
         <BappHeader/>
         <Transition name="move">
-          <BappLoader v-show="isLoading"/>
+          <BappLoader v-show="stateLoading.isLoading"/>
         </Transition>
         <BappPanel :measureMilk="stateMeasureMilks.measureMilk"/>
         <BappFooter/>
@@ -11,9 +11,10 @@
 </template>
 
 <script>
-import { useShowModalStore } from './stores/showModal';
-import { useMeasureMilkstore } from './stores/measureMilks';
-import { useAccessStore } from './stores/access';
+import { useShowModalStore } from '@/stores/showModal';
+import { useMeasureMilkstore } from '@/stores/measureMilks';
+import { useAccessStore } from '@/stores/access';
+import { useIsLoadingStore } from '@/stores/loading';
 
 import BappLogin from '@/components/Layout/Login.vue';
 import BappHeader from '@/components/Layout/Header.vue';
@@ -27,16 +28,15 @@ export default {
       const state = useShowModalStore()
       const stateMeasureMilks = useMeasureMilkstore()
       const stateAccess = useAccessStore()
+      const stateLoading = useIsLoadingStore()
       return {
         state,
         stateMeasureMilks,
-        stateAccess
+        stateAccess,
+        stateLoading
       }
     },
     data() {
-      return {
-        isLoading: false
-      }
     },
     components: { 
       BappHeader, 
@@ -50,7 +50,8 @@ export default {
       this.stateMeasureMilks.getMeasureMilks();
     },
     computed(){
-      return this.stateMeasureMilks.measureMilks
+      const data = this.stateMeasureMilks.measureMilks
+      return data;
     },
     created() {
     },
