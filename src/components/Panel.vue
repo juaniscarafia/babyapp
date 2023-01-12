@@ -1,7 +1,7 @@
 <template>
   <div class="container results">
-    <div class="columns is-multiline is-flex is-justify-content-center">
-      <div class="column is-two-fifths" v-for="(m, index) in measureMilk" :key="index">
+    <div id="columns" class="columns is-multiline is-flex is-justify-content-center">
+      <div id="column" class="column is-two-fifths" v-for="(m, index) in measureMilk" :key="index">
         <div class="card">
           <div class="panel">
             <div class="panel-heading">
@@ -56,12 +56,25 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .container .results, .columns .is-multiline .is-flex .is-justify-content-center{
-    width: 100%;
+  @media screen and (max-width: 767px){
+    #columns, #column{
+      width: 103%;
+    }
+    .column {
+      margin: 20px 5px 20px 20px;
+    }
   }
-  .column {
-    margin: 20px;
+
+  @media screen and (min-width: 767px){
+    .table {
+      font-size: 12px;
+    }
+
+    .column {
+      margin: 20px;
+    }
   }
+  
   .panel-heading {
     background-color: #d764df;
   }
