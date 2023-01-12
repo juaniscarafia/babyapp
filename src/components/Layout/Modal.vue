@@ -91,9 +91,9 @@ export default {
     const state = useShowModalStore();
     const stateMeasureMilks = useMeasureMilkstore()
 
-    const date = ref(new Date().toLocaleString('es', {timeZone: 'America/Argentina/Buenos_Aires'}));
+    const date = ref(new Date());
     const format = (date) => {
-      const day = date.getDate().toString();
+      const day = date.getDate();
       const month = date.getMonth() + 1;
       const year = date.getFullYear();
 
@@ -159,7 +159,7 @@ export default {
         return;
       }
 
-      const day = this.date.getDate().toString();
+      const day = this.date.getDate();
       const month = this.date.getMonth() + 1;
       const year = this.date.getFullYear();
       const hours = this.time.hours;
