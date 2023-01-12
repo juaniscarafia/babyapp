@@ -9,18 +9,6 @@
             </div>
             <div class="panel-block">
               <BappTable :measureMilk="m.Measures"/>
-              <article class="media">
-                  <!-- <div class="media-content">
-                    <div class="content">
-                        
-                    </div>
-                  </div> -->
-                  <!-- <nav class="level">
-                    <div class="level-left">
-                      <a href="" class="level item"></a>
-                    </div>
-                  </nav> -->
-              </article>
             </div>
           </div>
         </div>
