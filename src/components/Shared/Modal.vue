@@ -45,13 +45,16 @@
           <div class="column is-6">
             <div class="field has-addons">
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="number" placeholder="Medida" v-model="dataMeasure.Measure" />
+                <input
+                  class="input"
+                  type="number"
+                  placeholder="Medida"
+                  v-model="dataMeasure.Measure"
+                />
                 <span class="icon is-left"> 📏 </span>
               </div>
               <p class="control">
-                <a class="button is-static">
-                  ml
-                </a>
+                <a class="button is-static"> ml </a>
               </p>
             </div>
           </div>
@@ -61,7 +64,13 @@
                 <span class="select">
                   <select id="selectMilks" v-model="dataMeasure.IdMilk">
                     <option disabled value="0">Leches</option>
-                    <option v-for="(m,index) in milks" :key="index" :value="m.IdMilk">{{m.Name}}</option>
+                    <option
+                      v-for="(m, index) in milks"
+                      :key="index"
+                      :value="m.IdMilk"
+                    >
+                      {{ m.Name }}
+                    </option>
                   </select>
                 </span>
                 <span class="icon is-small is-left"> 🍼 </span>
@@ -71,7 +80,9 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" @click="insertMeasure">Guardar</button>
+        <button class="button is-success" @click="insertMeasure">
+          Guardar
+        </button>
         <button class="button" @click="closeModal">Cancel</button>
       </footer>
     </div>
@@ -83,13 +94,15 @@ import { ref } from "vue";
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useShowModalStore } from "@/stores/showModal";
-import { useMeasureMilkstore } from '@/stores/measureMilks';
-import measureMilks from "../../services/measureMilk";
+import { useMeasureMilkstore } from "@/stores/measureMilks";
+import measureMilks from "@/services/measureMilk";
+import { useAccessStore } from "@/stores/access";
 
 export default {
   setup() {
     const state = useShowModalStore();
-    const stateMeasureMilks = useMeasureMilkstore()
+    const stateMeasureMilks = useMeasureMilkstore();
+    const stateAccess = useAccessStore();
 
     const date = ref(new Date());
     const format = (date) => {
@@ -97,8 +110,10 @@ export default {
       const month = date.getMonth() + 1;
       const year = date.getFullYear();
 
-      return `${day <= 9 ? `0${day}` : `${day}`}-${month <= 9 ? `0${month}` : `${month}`}-${year}`;
-    }
+      return `${day <= 9 ? `0${day}` : `${day}`}-${
+        month <= 9 ? `0${month}` : `${month}`
+      }-${year}`;
+    };
     const month = ref({
       month: new Date().getMonth(),
       year: new Date().getFullYear(),
@@ -112,20 +127,21 @@ export default {
     }
     const handleDate = (modelData) => {
       date.value = modelData;
-    }
+    };
     const handleTime = (modelData) => {
       time.value = modelData;
-    }
+    };
     return {
       state,
       stateMeasureMilks,
+      stateAccess,
       closeModal,
       date,
       format,
       month,
       time,
       handleDate,
-      handleTime
+      handleTime,
     };
   },
   mixins: [],
@@ -134,23 +150,23 @@ export default {
       date: this.date,
       time: this.time,
       dataMeasure: {
-        Date: '',
-        Time: '',
+        Date: "",
+        Time: "",
         Measure: 10,
         IdMilk: 0,
-        IdBaby: 1
+        IdBaby: 1,
       },
-      milks: []
-    }
+      milks: [],
+    };
   },
   components: { Datepicker },
-  computed(){
-    return this.stateMeasureMilks.measureMilks
+  computed() {
+    return this.stateMeasureMilks.measureMilks;
   },
   created() {
-    measureMilks.listMilks().then(res => {
+    measureMilks.listMilks(this.stateAccess.user.token).then((res) => {
       this.milks = res.data.body;
-    })
+    });
   },
   methods: {
     insertMeasure() {
@@ -164,14 +180,20 @@ export default {
       const year = this.date.getFullYear();
       const hours = this.time.hours;
       const minutes = this.time.minutes;
-      this.dataMeasure.Date = `${day <= 9 ? `0${day}` : `${day}`}-${month <= 9 ? `0${month}` : `${month}`}-${year}`;
-      this.dataMeasure.Time = `${hours <= 9 ? `0${hours}` : `${hours}`}:${minutes <= 9 ? `0${minutes}` : `${minutes}`}`;
+      this.dataMeasure.Date = `${day <= 9 ? `0${day}` : `${day}`}-${
+        month <= 9 ? `0${month}` : `${month}`
+      }-${year}`;
+      this.dataMeasure.Time = `${hours <= 9 ? `0${hours}` : `${hours}`}:${
+        minutes <= 9 ? `0${minutes}` : `${minutes}`
+      }`;
 
-      measureMilks.insert(this.dataMeasure).then(res => {
-        this.stateMeasureMilks.getMeasureMilks();
-        this.closeModal();
-      });
-    }
+      measureMilks
+        .insert(this.stateAccess.user.token, this.dataMeasure)
+        .then((res) => {
+          this.stateMeasureMilks.getMeasureMilks();
+          this.closeModal();
+        });
+    },
   },
 };
 </script>
@@ -183,7 +205,8 @@ export default {
   margin: 8px;
 }
 
-.select, #selectMilks {
+.select,
+#selectMilks {
   width: 100%;
 }
 </style>

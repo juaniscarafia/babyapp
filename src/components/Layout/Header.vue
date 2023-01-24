@@ -6,20 +6,38 @@
           <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="/">
-                <strong>
-                  👶🏻 BabyApp 🍼
-                </strong>
+                <strong> 👶🏻 BabyApp 🍼 </strong>
               </a>
-              <a role="button" class="navbar-burger" :class="{'is-active': menuMobileIsActive, '': !menuMobileIsActive}" @click="menu" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <a
+                role="button"
+                class="navbar-burger"
+                :class="{
+                  'is-active': menuMobileIsActive,
+                  '': !menuMobileIsActive,
+                }"
+                @click="menu"
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navbarBasicExample"
+              >
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
             </div>
-            <div id="navbarBabyApp" class="navbar-menu" :class="{'is-active': menuMobileIsActive, '': !menuMobileIsActive}">
+            <div
+              id="navbarBabyApp"
+              class="navbar-menu"
+              :class="{
+                'is-active': menuMobileIsActive,
+                '': !menuMobileIsActive,
+              }"
+            >
               <div class="navbar-start">
-                <!-- <router-link class="navbar-item" :to="{ path: '/', name: 'search' }">Buscar</router-link>
-                <router-link class="navbar-item" to="about">Nosotros</router-link> -->
+                <!-- <router-link class="navbar-item" :to="{ path: '/', name: 'search' }">Buscar</router-link> -->
+                <router-link class="navbar-item" to="about"
+                  >Nosotros</router-link
+                >
               </div>
             </div>
           </nav>
@@ -36,31 +54,28 @@
 </template>
 
 <style scoped>
-  .navbar-item:focus-within {
-    background-color: #6be5ae;
-    color: white;
-  }
+.navbar-item:focus-within {
+  background-color: #6be5ae;
+  color: white;
+}
 </style>
 
 <script>
-  export default {
-    data() {
-      return {
-        menuMobileIsActive: false
+export default {
+  data() {
+    return {
+      menuMobileIsActive: false,
+    };
+  },
+  components: {},
+  methods: {
+    menu() {
+      if (this.menuMobileIsActive) {
+        this.menuMobileIsActive = false;
+      } else {
+        this.menuMobileIsActive = true;
       }
     },
-    components: {
-      
-    },
-    methods: {
-      menu() {
-        if (this.menuMobileIsActive) {
-          this.menuMobileIsActive = false
-        }
-        else {
-          this.menuMobileIsActive = true
-        }
-      }
-    }
-}
+  },
+};
 </script>

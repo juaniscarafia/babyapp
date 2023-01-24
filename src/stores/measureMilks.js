@@ -1,25 +1,25 @@
 import { defineStore } from "pinia";
 import measureMilkService from "@/services/measureMilk";
-import { useIsLoadingStore } from '@/stores/loading';
+import { useIsLoadingStore } from "@/stores/loading";
 
-export const useMeasureMilkstore = defineStore('measureMilks', {
-  state: () => { 
+export const useMeasureMilkstore = defineStore("measureMilks", {
+  state: () => {
     return {
-      measureMilk: {}
-    }
+      measureMilk: {},
+    };
   },
   getters: {
-    getMeasure(state){
-      return state.measureMilk
+    getMeasure(state) {
+      return state.measureMilk;
     },
   },
   actions: {
-    getMeasureMilks() {
+    getMeasureMilks(token) {
       useIsLoadingStore().setTrue();
-      measureMilkService.search().then(res => {
+      measureMilkService.search(token).then((res) => {
         useIsLoadingStore().setFalse();
-        return this.measureMilk = res.data.body;
+        return (this.measureMilk = res.data.body);
       });
-    }
+    },
   },
-})
+});
