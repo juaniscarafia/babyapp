@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import App from "@/App.vue";
 import router from "@/router";
@@ -18,27 +19,28 @@ app.component("Datepicker", Datepicker);
 
 const pinia = createPinia();
 
-pinia.use((context) => {
-  const storeId = context.store.$id;
+pinia.use(piniaPluginPersistedstate)
+// pinia.use((context) => {
+//   const storeId = context.store.$id;
 
-  if (storeId === 'access') {
-    const serilizer = {
-      serialize: JSON.stringify,
-      deserialize: JSON.parse
-    }
+//   if (storeId === 'access') {
+//     const serilizer = {
+//       serialize: JSON.stringify,
+//       deserialize: JSON.parse
+//     }
 
-    // sync store from localstorage
-    const fromStorage = serilizer.deserialize(window.localStorage.getItem(storeId));
-    if (fromStorage) {
-      context.store.$patch(fromStorage);
-    }
+//     // sync store from localstorage
+//     const fromStorage = serilizer.deserialize(window.localStorage.getItem(storeId));
+//     if (fromStorage) {
+//       context.store.$patch(fromStorage);
+//     }
 
-    // listen for changes from localstorage
-    context.store.$subscribe((mutation,state) =>{
-      window.localStorage.setItem(storeId,serilizer.serialize(state));
-    })
-  }
-})
+//     // listen for changes from localstorage
+//     context.store.$subscribe((mutation,state) =>{
+//       window.localStorage.setItem(storeId,serilizer.serialize(state));
+//     })
+//   }
+// })
 
 app.use(pinia);
 

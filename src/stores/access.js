@@ -11,6 +11,7 @@ export const useAccessStore = defineStore("access", {
       },
     };
   },
+  persist: true,
   getters: {},
   actions: {
     _access() {

@@ -39,6 +39,10 @@ export default {
   },
   mounted() {
     this.stateMeasureMilks.getMeasureMilks(this.stateAccess.user.token);
+    debugger
+    if (this.stateMeasureMilks.measureMilk === {}) {
+      console.log("empty");  
+    }
   },
   computed() {
     const data = this.stateMeasureMilks.measureMilks;

@@ -18,6 +18,9 @@ export const useMeasureMilkstore = defineStore("measureMilks", {
       useIsLoadingStore().setTrue();
       measureMilkService.search(token).then((res) => {
         useIsLoadingStore().setFalse();
+        if (res === "Token inválido") {
+          return res
+        }
         return (this.measureMilk = res.data.body);
       });
     },
