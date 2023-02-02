@@ -34,9 +34,8 @@
               }"
             >
               <div class="navbar-start">
-                <!-- <router-link class="navbar-item" :to="{ path: '/', name: 'search' }">Buscar</router-link> -->
-                <router-link class="navbar-item" to="about"
-                  >Nosotros</router-link
+                <router-link class="navbar-item" to="historico"
+                  >Historico</router-link
                 >
               </div>
             </div>
@@ -55,8 +54,12 @@
 
 <style scoped>
 .navbar-item:focus-within {
-  background-color: #6be5ae;
+  background-color: #e9c9eb;
   color: white;
+}
+.router-link-active, .router-link-exact-active{
+  background-color: #e9c9eb;
+  color: #bf48c7;
 }
 </style>
 

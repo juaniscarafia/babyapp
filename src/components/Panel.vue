@@ -1,7 +1,7 @@
 <template>
   <div class="container results">
-    <div class="columns is-multiline is-flex is-justify-content-center">
-      <div
+    <div id="columns" class="columns is-multiline is-flex is-justify-content-center mt0I w100">
+      <div id="column"
         class="column is-two-fifths"
         v-for="(m, index) in measureMilk"
         :key="index"
@@ -56,6 +56,16 @@ export default {
 .container .results,
 .columns .is-multiline .is-flex .is-justify-content-center {
   width: 100%;
+}
+.mt0I{
+  margin-bottom: 0 !important;
+}
+
+.w100{
+  width: 100%;
+}
+#columns, #column {
+  width: 103%;
 }
 .column {
   margin: 20px;

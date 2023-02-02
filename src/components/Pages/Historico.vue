@@ -4,7 +4,7 @@
       <BappLoader v-show="stateLoading.isLoading" />
     </Transition>
     <div class="container has-text-centered">
-      <h1 class="title">Ultimos 7 días</h1>
+      <h1 class="title">Histórico</h1>
     </div>
     <BappPanel :measureMilk="measureMilk" />
     <img src="../../assets/img/01_1400.webp" />

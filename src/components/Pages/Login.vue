@@ -3,6 +3,9 @@
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
+          <div class="container-img column is-5-tablet is-4-desktop is-3-widescreen">
+            <img src="../../assets/img/01_1400.webp"/>
+          </div>
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
             <div class="box">
               <div class="field">
@@ -35,6 +38,9 @@
                 <button class="button" @click="accessLogin">Login</button>
               </div>
             </div>
+          </div>
+          <div class="container-img column is-5-tablet is-4-desktop is-3-widescreen">
+            <img class="kiss" src="../../assets/img/02.webp"/>
           </div>
         </div>
       </div>
@@ -92,5 +98,10 @@ export default {
 .button:hover {
   color: #bf48c7;
   background-color: white !important;
+}
+.container-img{
+  display: flex;
+  justify-content: center;
+  height: 248px;
 }
 </style>

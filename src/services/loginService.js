@@ -13,7 +13,6 @@ login.access = async function (data) {
       `${urlLocal}/login/`,
       data
     )
-    // return await axios.post('http://localhost:3004/api/login/',data)
     .then((res) => res)
     .catch((error) => error);
 };
